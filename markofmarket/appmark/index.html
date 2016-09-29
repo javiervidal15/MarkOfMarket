@@ -1,11 +1,24 @@
-<html>
-	<head>
-	</head>
-	<body>
-		<form>
+{%extends base.html%}
+		<form action="/actualizar/" method="POST">
 			
 			<input type="submit" value="Ver monedas en comun"/>
 			
 		</form>
-	</body>
-</html>
+		<table>
+			
+			<tr>
+				<th>Mercado/Cambio</th>
+				{%for mercado in listamercados%}
+				<th> {{mercado.nombre}} </th>
+				{%endfor%}
+				{%for}
+				
+			</tr>
+			{%for cambio in listacambios%}
+			<tr>
+				<td>{{cambio.str}}</td>
+				
+			</tr>
+			{%endfor%}
+				
+		</table>

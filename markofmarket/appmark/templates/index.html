@@ -1,7 +1,24 @@
-<html>
-	<head>
-	</head>
-	<body>
-		<input type="button" value="Ver monedas en comun"/>
-	</body>
-</html>
+
+		<form action="/actualizar/" method="POST">
+			
+			<input type="submit" value="Ver monedas en comun"/>
+			
+		</form>
+		<table>
+			
+			<tr>
+				<th>Mercado/Cambio</th>
+				{%for mercado in listamercados%}
+				<th> {{mercado.nombre}} </th>
+				{%endfor%}
+				{%for}
+				
+			</tr>
+			{%for cambio in listacambios%}
+			<tr>
+				<td>{{cambio}}</td>
+				
+			</tr>
+			{%endfor%}
+				
+		</table>
