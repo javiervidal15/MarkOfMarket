@@ -57,7 +57,7 @@ ROOT_URLCONF = 'markofmarket.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['../appmark/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

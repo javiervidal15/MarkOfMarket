@@ -11,13 +11,18 @@ class Moneda(models.Model):
 
         return self.nombre
 
+    def __unicode__(self):
+
+        return self.nombre
+
+
 class Cambio(models.Model):
     monedabase = models.ForeignKey('Moneda', on_delete=models.CASCADE, related_name='base')
     monedadestino = models.ForeignKey('Moneda', on_delete=models.CASCADE, related_name='destino')
 
     def __str__(self):
 
-        return self.monedabase + '-' + self.monedadestino
+        return  '%s-%s'  %(self.monedabase,self.monedadestino)
 
 class Mercado(models.Model):
     nombre = models.CharField(max_length=50)
