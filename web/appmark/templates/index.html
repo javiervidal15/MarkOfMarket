@@ -1,0 +1,15 @@
+<html>
+	<head>
+
+	</head>
+	<body>
+		<a href="{% url 'actualizar_mercados' %}"><button>Actualizar Mercados</button></a>
+
+		<ul>
+		{% for mercado in mercados %}
+			<li><strong>{{mercado.get_nombre}}</strong></li>
+			<li>{{mercado.get_cambios.count}}</li>
+		{% endfor %}
+		</ul>
+	</body>
+</html>

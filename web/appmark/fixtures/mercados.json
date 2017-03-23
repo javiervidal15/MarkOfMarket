@@ -1,0 +1,16 @@
+[
+  {
+      "model": "appmark.mercado",
+      "fields":{
+        "nombre" : "Poloniex"
+      },
+      "pk" : 1
+  },
+  {
+      "model": "appmark.mercado",
+      "fields": {
+        "nombre" : "Bittrex"
+      },
+      "pk" : 2
+  }
+]
