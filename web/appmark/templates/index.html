@@ -4,6 +4,7 @@
 	</head>
 	<body>
 		<a href="{% url 'actualizar_mercados' %}"><button>Actualizar Mercados</button></a>
+		<a href="{% url 'insertar_registros' %}"><button>Insertar Registros</button></a>
 
 		<ul>
 		{% for mercado in mercados %}
@@ -11,5 +12,14 @@
 			<li>{{mercado.get_cambios.count}}</li>
 		{% endfor %}
 		</ul>
+
+		{% if tiempo %}
+			<p>Se insertaron correctamentos los registros en {{tiempo}}.</p>
+			<script>
+			 let tiempo = 5000 - ({{tiempo}}*1000);
+			 setTimeout("location.href ='http://localhost:8080{% url 'insertar_registros' %}'",tiempo);
+			</script>
+		{% endif %}
+
 	</body>
 </html>
