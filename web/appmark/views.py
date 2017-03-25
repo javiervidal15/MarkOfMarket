@@ -1,7 +1,9 @@
+import csv
 from time import time
 from timeit import timeit
 
 from django.core.urlresolvers import reverse
+from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import  render
 from django.utils.timezone import now
@@ -13,6 +15,26 @@ import json
 def Index(request):
     mercados = Mercado.objects.all()
     return render(request=request,template_name='index.html',context={'mercados': mercados})
+
+def DescargarRegistros(request):
+    registros = Registro.objects.all()
+
+    # Creamos el objeto Httpresponse con la cabecera CSV apropiada.
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=clientes.csv'
+
+    # Creamos un escritor CSV usando a HttpResponse como "fichero"
+    writer = csv.writer(response)
+    writer.writerow(['Fecha','Mercado', 'MonedaBase','MonedaDestino','Last','Highest bid','Lowest ask', 'Base volume','Quote volume',
+                     'High 24hr','Low 24hr','Open buy orders', 'Open shell orders'])
+    for reg in registros:
+        writer.writerow([reg.get_fecha(),reg.get_mercado().id,reg.get_cambio().get_monedabase().id,
+                         reg.get_cambio().get_monedadestino().id,reg.get_last(), reg.get_highest_bid(),reg.get_lowest_ask(),
+                        reg.get_base_volume(),reg.get_quote_volume(),reg.get_high24hr(),reg.get_low24hr(),reg.get_open_buy_orders(),
+                        reg.get_open_shell_orders()],)
+
+    return response
+
 
 def ActualizarMercados(request):
     poloniex = Mercado.objects.get(nombre = 'Poloniex')

@@ -18,6 +18,12 @@ class Cambio(models.Model):
     monedabase = models.ForeignKey('Moneda', on_delete=models.CASCADE, related_name='base')
     monedadestino = models.ForeignKey('Moneda', on_delete=models.CASCADE, related_name='destino')
 
+    def get_monedabase(self):
+        return self.monedabase
+
+    def get_monedadestino(self):
+        return self.monedadestino
+
     def __str__(self):
         return  '%s-%s'  %(self.monedabase,self.monedadestino)
 
@@ -68,3 +74,39 @@ class Registro(models.Model):
 
     def __str__(self):
         return "%s:%s:%s - %s " %(self.mercado, self.cambio,self.last, self.fecha)
+
+    def get_fecha(self):
+        return self.fecha
+
+    def get_mercado(self):
+        return self.mercado
+
+    def get_cambio(self):
+        return self.cambio
+
+    def get_last(self):
+        return self.last
+
+    def get_highest_bid(self):
+        return self.highest_bid
+
+    def get_lowest_ask(self):
+        return self.lowest_ask
+
+    def get_base_volume(self):
+        return self.base_volume
+
+    def get_quote_volume(self):
+        return self.quote_volume
+
+    def get_high24hr(self):
+        return self.high_24hr
+
+    def get_low24hr(self):
+        return self.low_24hr
+
+    def get_open_buy_orders(self):
+        return self.open_buy_orders
+
+    def get_open_shell_orders(self):
+        return self.open_shell_orders

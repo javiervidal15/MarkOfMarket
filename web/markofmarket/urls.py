@@ -23,5 +23,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^actualizar/$', views.ActualizarMercados, name="actualizar_mercados"),
     url(r'^insertar/registros/$', views.InsertarRegistros, name="insertar_registros"),
+    url(r'^descargar/registros/$', views.DescargarRegistros, name="descargar_registros"),
     url(r'^$', views.Index, name="index")
 ]
